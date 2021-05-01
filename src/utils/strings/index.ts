@@ -1,4 +1,4 @@
-export const PROJECT_NAME = 'Select Here a project name';
+export const PROJECT_NAME = 'Spreadable';
 
 export const slugify = (text: string): string => {
   if (!text || typeof text !== 'string') {
