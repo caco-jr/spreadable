@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import XLSX from 'xlsx';
+import { Upload, message } from 'antd';
 
 import * as S from './FileUpload.styles';
 import { toCamelCase } from '@utils/strings/index';
+
+const { Dragger } = Upload;
 
 type IProps = {
   accept: string;
@@ -11,9 +14,24 @@ type IProps = {
 const FileUpload = ({ accept }: IProps): JSX.Element => {
   const [selectedFileObject, setSelectedFileObject] = useState();
 
-  const changeHandler = event => {
-    const files = event.target.files;
-    const file = files[0];
+  const draggerProps = {
+    name: 'file',
+    multiple: false,
+    accept,
+    onChange(info) {
+      const { status } = info.file;
+
+      if (status === 'done') {
+        message.success(`${info.file.name} file uploaded successfully.`);
+
+        handleFileChange(info.file.originFileObj);
+      } else if (status === 'error') {
+        message.error(`${info.file.name} file upload failed.`);
+      }
+    },
+  };
+
+  const handleFileChange = file => {
     const reader = new FileReader();
 
     reader.onload = function (e) {
@@ -48,7 +66,16 @@ const FileUpload = ({ accept }: IProps): JSX.Element => {
 
   return (
     <S.Wrapper>
-      <input type="file" accept={accept} onChange={changeHandler} />
+      <Dragger {...draggerProps}>
+        <p className="ant-upload-text">
+          Click or drag file to this area to upload
+        </p>
+
+        <p className="ant-upload-hint">
+          Support for a single or bulk upload. Strictly prohibit from uploading
+          company data or other band files
+        </p>
+      </Dragger>
 
       {selectedFileObject && 'Olá'}
     </S.Wrapper>
