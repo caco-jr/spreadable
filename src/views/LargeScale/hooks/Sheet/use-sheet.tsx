@@ -1,8 +1,10 @@
 import React, { useState, useContext, createContext, ReactNode } from 'react';
 
+import { ISheet } from '@interfaces/Sheet';
+
 type ISheetHookContext = {
-  sheet: any;
-  setSheet: (data: any) => void;
+  sheet: ISheet;
+  setSheet: (data: ISheet) => void;
 };
 
 const sheetContext = createContext<ISheetHookContext>({} as ISheetHookContext);
