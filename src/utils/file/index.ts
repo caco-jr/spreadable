@@ -27,7 +27,7 @@ export const sheetToObject = (
 };
 
 const builder = (sheetList: Array<Array<string | number>>): ISheet => {
-  const headers = sheetList[0].map(item => toCamelCase(item));
+  const headers = sheetList[0].map(item => toCamelCase(`${item}`));
   const rows = sheetList.slice(1);
 
   const buildObject = (list: Array<string | number>) =>
