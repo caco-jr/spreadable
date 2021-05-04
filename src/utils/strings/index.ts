@@ -16,8 +16,13 @@ export const slugify = (text: string): string => {
     .replace(/--+/g, '-');
 };
 
-export const toCamelCase = str =>
-  str.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase());
+export const toCamelCase = (str: string): string =>
+  str
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase());
 
 export const replaceMe = (
   template: string,
