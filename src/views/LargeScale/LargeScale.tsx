@@ -5,20 +5,19 @@ import { sheetToObject } from '@utils/file';
 import { useSheet } from './hooks/Sheet/use-sheet';
 
 export const LargeScalePage = (): JSX.Element => {
-  const { sheet, setSheet } = useSheet();
+  const { setSheet } = useSheet();
 
   return (
     <Layout title="Large scale">
       <S.Wrapper className="container">
         <h1>LargeScale</h1>
+
         <FileUpload
           accept=".xls, .xlsx"
           onFileUpload={({ file }) => {
             sheetToObject(file.originFileObj, setSheet);
           }}
         />
-
-        {sheet && 'olá'}
       </S.Wrapper>
     </Layout>
   );

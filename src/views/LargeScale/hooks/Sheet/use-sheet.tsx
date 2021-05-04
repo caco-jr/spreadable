@@ -1,4 +1,10 @@
-import React, { useState, useContext, createContext, ReactNode } from 'react';
+import React, {
+  useState,
+  useContext,
+  createContext,
+  ReactNode,
+  useEffect,
+} from 'react';
 
 import { ISheet } from '@interfaces/Sheet';
 
@@ -27,6 +33,19 @@ export const useSheet = (): ISheetHookContext => {
 
 const useProvideSheet = (): ISheetHookContext => {
   const [sheet, setSheet] = useState(null);
+  const SHEET_CACHE_KEY = 'sheet';
 
-  return { sheet, setSheet };
+  const handleSheet = (sheetObject: ISheet): void => {
+    sessionStorage.setItem(SHEET_CACHE_KEY, JSON.stringify(sheetObject));
+
+    setSheet(sheetObject);
+  };
+
+  useEffect(() => {
+    const cache = sessionStorage.getItem(SHEET_CACHE_KEY);
+
+    cache && setSheet(JSON.parse(cache));
+  }, []);
+
+  return { sheet, setSheet: handleSheet };
 };
