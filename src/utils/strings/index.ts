@@ -18,3 +18,12 @@ export const slugify = (text: string): string => {
 
 export const toCamelCase = str =>
   str.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase());
+
+export const replaceMe = (
+  template: string,
+  data: Record<string, string>
+): string => {
+  const pattern = /{\s*(\w+?)\s*}/g; // {property}
+
+  return template.replace(pattern, (_, token) => data[token] || '');
+};
