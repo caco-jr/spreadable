@@ -1,6 +1,7 @@
 import { ThemeProvider } from 'styled-components';
 import { AppProps } from 'next/app';
 
+import 'antd/dist/antd.css';
 import '@styles/main.scss';
 
 const theme = {
