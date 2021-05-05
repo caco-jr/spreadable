@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 
 import 'antd/dist/antd.css';
 import '@styles/main.scss';
-import { SheetProvider } from '@views/LargeScale/hooks/Sheet/use-sheet';
+import { SheetProvider } from '@hooks/Sheet/use-sheet';
 
 const theme = {
   colors: {

@@ -2,7 +2,7 @@ import * as S from './LargeScale.styles';
 import Layout from '@components/Layout';
 import FileUpload from '@components/FileUpload';
 import { sheetToObject } from '@utils/file';
-import { useSheet } from './hooks/Sheet/use-sheet';
+import { useSheet } from '@hooks/Sheet/use-sheet';
 
 export const LargeScalePage = (): JSX.Element => {
   const { setSheet } = useSheet();
