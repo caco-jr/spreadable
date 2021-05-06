@@ -11,6 +11,7 @@ import { ISpreadsheet } from '@interfaces/Spreadsheet';
 type ISpreadsheetHookContext = {
   spreadsheet: ISpreadsheet;
   setSpreadsheet: (data: ISpreadsheet) => void;
+  removeSpreadsheet: () => void;
 };
 
 const spreadsheetContext = createContext<ISpreadsheetHookContext>(
@@ -45,11 +46,16 @@ const useProvideSpreadsheet = (): ISpreadsheetHookContext => {
     setSpreadsheet(sheetObject);
   };
 
+  const removeSpreadsheet = (): void => {
+    sessionStorage.removeItem(SHEET_CACHE_KEY);
+    setSpreadsheet(null);
+  };
+
   useEffect(() => {
     const cache = sessionStorage.getItem(SHEET_CACHE_KEY);
 
     cache && setSpreadsheet(JSON.parse(cache));
   }, []);
 
-  return { spreadsheet, setSpreadsheet: handleSheet };
+  return { spreadsheet, setSpreadsheet: handleSheet, removeSpreadsheet };
 };
