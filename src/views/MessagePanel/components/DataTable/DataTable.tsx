@@ -5,11 +5,13 @@ import { useSpreadsheet } from '@hooks/Spreadsheet/use-spreadsheet';
 import * as S from './DataTable.styles';
 
 const DataTable = (): JSX.Element => {
-  const { spreadsheet } = useSpreadsheet();
+  const { spreadsheet, setSelectedItems } = useSpreadsheet();
   const [selectedRowKeys, setSelectedRowKeys] = useState<Array<number>>([]);
 
   const onSelectChange = (selectedRows: number[]): void => {
     setSelectedRowKeys(selectedRows);
+
+    setSelectedItems(selectedRows.map(row => spreadsheet.refinedData[row]));
   };
 
   const getDataSource = () => {

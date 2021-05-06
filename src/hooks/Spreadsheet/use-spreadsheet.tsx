@@ -12,6 +12,8 @@ type ISpreadsheetHookContext = {
   spreadsheet: ISpreadsheet;
   setSpreadsheet: (data: ISpreadsheet) => void;
   removeSpreadsheet: () => void;
+  selectedItems: Record<string, number>[];
+  setSelectedItems: (selectedList: Record<string, number>[]) => void;
 };
 
 const spreadsheetContext = createContext<ISpreadsheetHookContext>(
@@ -38,6 +40,10 @@ export const useSpreadsheet = (): ISpreadsheetHookContext => {
 
 const useProvideSpreadsheet = (): ISpreadsheetHookContext => {
   const [spreadsheet, setSpreadsheet] = useState(null);
+  const [selectedItems, setSelectedItems] = useState<Record<string, number>[]>(
+    []
+  );
+
   const SHEET_CACHE_KEY = 'spreadsheet';
 
   const handleSheet = (sheetObject: ISpreadsheet): void => {
@@ -57,5 +63,11 @@ const useProvideSpreadsheet = (): ISpreadsheetHookContext => {
     cache && setSpreadsheet(JSON.parse(cache));
   }, []);
 
-  return { spreadsheet, setSpreadsheet: handleSheet, removeSpreadsheet };
+  return {
+    spreadsheet,
+    setSpreadsheet: handleSheet,
+    removeSpreadsheet,
+    selectedItems,
+    setSelectedItems,
+  };
 };
