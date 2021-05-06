@@ -1,6 +1,6 @@
 import * as S from './MessagePanel.styles';
 import Layout from '@components/Layout';
-import Table from './components/Table/Table';
+import DataTable from './components/DataTable';
 import MessageAssembly from './components/MessageAssembly/MessageAssembly';
 
 export const MessagePanelPage = (): JSX.Element => (
@@ -8,7 +8,7 @@ export const MessagePanelPage = (): JSX.Element => (
     <S.Wrapper className="container">
       <h1>MessagePanel</h1>
 
-      <Table />
+      <DataTable />
       <MessageAssembly />
     </S.Wrapper>
   </Layout>

@@ -1,10 +1,10 @@
 import { render } from '@test/testUtils';
 
-import Table from './Table';
+import DataTable from './DataTable';
 
 describe('Table', () => {
   it('should render the heading', () => {
-    const { getByRole } = render(<Table />);
+    const { getByRole } = render(<DataTable />);
 
     expect(getByRole('heading', { name: /Table/i })).toBeInTheDocument();
   });
