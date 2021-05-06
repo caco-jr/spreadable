@@ -2,10 +2,10 @@ import * as S from './LargeScale.styles';
 import Layout from '@components/Layout';
 import FileUpload from '@components/FileUpload';
 import { sheetToObject } from '@utils/file';
-import { useSheet } from '@hooks/Sheet/use-sheet';
+import { useSpreadsheet } from '@hooks/Spreadsheet/use-spreadsheet';
 
 export const LargeScalePage = (): JSX.Element => {
-  const { setSheet } = useSheet();
+  const { setSpreadsheet } = useSpreadsheet();
 
   return (
     <Layout title="Large scale">
@@ -15,7 +15,7 @@ export const LargeScalePage = (): JSX.Element => {
         <FileUpload
           accept=".xls, .xlsx"
           onFileUpload={({ file }) => {
-            sheetToObject(file.originFileObj, setSheet);
+            sheetToObject(file.originFileObj, setSpreadsheet);
           }}
         />
       </S.Wrapper>

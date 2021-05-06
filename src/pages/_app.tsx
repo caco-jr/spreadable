@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 
 import 'antd/dist/antd.css';
 import '@styles/main.scss';
-import { SheetProvider } from '@hooks/Sheet/use-sheet';
+import { SpreadsheetProvider } from '@hooks/Spreadsheet/use-spreadsheet';
 
 const theme = {
   colors: {
@@ -14,9 +14,9 @@ const theme = {
 export default function App({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <ThemeProvider theme={theme}>
-      <SheetProvider>
+      <SpreadsheetProvider>
         <Component {...pageProps} />
-      </SheetProvider>
+      </SpreadsheetProvider>
     </ThemeProvider>
   );
 }

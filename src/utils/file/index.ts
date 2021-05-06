@@ -1,11 +1,11 @@
 import XLSX from 'xlsx';
 
 import { toCamelCase } from '@utils/strings/index';
-import { ISheet } from '@interfaces/Sheet';
+import { ISpreadsheet } from '@interfaces/Spreadsheet';
 
 export const sheetToObject = (
   blob: Blob,
-  callback: (sheet: ISheet) => void
+  callback: (sheet: ISpreadsheet) => void
 ): void => {
   const reader = new FileReader();
 
@@ -26,7 +26,10 @@ export const sheetToObject = (
   reader.readAsBinaryString(blob);
 };
 
-const builder = (file, sheetList: Array<Array<string | number>>): ISheet => {
+const builder = (
+  file,
+  sheetList: Array<Array<string | number>>
+): ISpreadsheet => {
   const headers = sheetList[0].map(item => toCamelCase(`${item}`));
   const rows = sheetList.slice(1);
 

@@ -1,25 +1,28 @@
 import { Table } from 'antd';
 
-import { useSheet } from '@hooks/Sheet/use-sheet';
+import { useSpreadsheet } from '@hooks/Spreadsheet/use-spreadsheet';
 import * as S from './DataTable.styles';
 
 const DataTable = (): JSX.Element => {
-  const { sheet } = useSheet();
+  const { spreadsheet } = useSpreadsheet();
 
   const getDataSource = () => {
-    if (!sheet) {
+    if (!spreadsheet) {
       return [];
     }
 
-    return sheet.refinedData.map((data, index) => ({ ...data, key: index }));
+    return spreadsheet.refinedData.map((data, index) => ({
+      ...data,
+      key: index,
+    }));
   };
 
   const getColumns = () => {
-    if (!sheet) {
+    if (!spreadsheet) {
       return [];
     }
 
-    const { originalData, headers } = sheet;
+    const { originalData, headers } = spreadsheet;
     const headerList = originalData[0];
 
     return headers.map((item, index) => ({

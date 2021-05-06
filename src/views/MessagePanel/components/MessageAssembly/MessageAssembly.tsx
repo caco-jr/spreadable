@@ -2,21 +2,21 @@ import { useState } from 'react';
 import { Mentions } from 'antd';
 
 import * as S from './MessageAssembly.styles';
-import { useSheet } from '@hooks/Sheet/use-sheet';
+import { useSpreadsheet } from '@hooks/Spreadsheet/use-spreadsheet';
 import { replaceMe } from '@utils/strings/index';
 
 const { Option } = Mentions;
 
 const MessageAssembly = (): JSX.Element => {
   const [message, setMessage] = useState('');
-  const { sheet } = useSheet();
+  const { spreadsheet } = useSpreadsheet();
 
   const getBeautyMessage = (): string => {
-    if (!sheet) {
+    if (!spreadsheet) {
       return '';
     }
 
-    const exampleObject = sheet.refinedData[0];
+    const exampleObject = spreadsheet.refinedData[0];
 
     return replaceMe(
       message,
@@ -29,13 +29,13 @@ const MessageAssembly = (): JSX.Element => {
       <h2>MessageAssembly</h2>
 
       <section>
-        {sheet?.headers.map(header => (
+        {spreadsheet?.headers.map(header => (
           <span key={header}>{header}</span>
         ))}
       </section>
 
       <Mentions rows={3} onChange={setMessage} prefix={['{']}>
-        {sheet?.headers.map(item => (
+        {spreadsheet?.headers.map(item => (
           <Option key={`suggestion-${item}`} value={`${item}}`}>
             {item}
           </Option>

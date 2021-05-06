@@ -1,4 +1,4 @@
-export type ISheet = {
+export type ISpreadsheet = {
   fileName: string;
   headers: Array<string>;
   rows: Array<Array<string | number>>;
