@@ -20,13 +20,13 @@ export const sheetToObject = (
       header: 1,
     });
 
-    callback(builder(dataParse));
+    callback(builder(blob, dataParse));
   };
 
   reader.readAsBinaryString(blob);
 };
 
-const builder = (sheetList: Array<Array<string | number>>): ISheet => {
+const builder = (file, sheetList: Array<Array<string | number>>): ISheet => {
   const headers = sheetList[0].map(item => toCamelCase(`${item}`));
   const rows = sheetList.slice(1);
 
@@ -41,5 +41,11 @@ const builder = (sheetList: Array<Array<string | number>>): ISheet => {
 
   const refinedData = rows.map(item => buildObject(item));
 
-  return { headers, rows, refinedData, originalData: sheetList };
+  return {
+    fileName: file.name,
+    headers,
+    rows,
+    refinedData,
+    originalData: sheetList,
+  };
 };

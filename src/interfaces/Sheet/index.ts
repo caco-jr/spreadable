@@ -1,4 +1,5 @@
 export type ISheet = {
+  fileName: string;
   headers: Array<string>;
   rows: Array<Array<string | number>>;
   refinedData: Array<Record<string, number>>;
