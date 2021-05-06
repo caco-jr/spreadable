@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Table } from 'antd';
 
 import { useSpreadsheet } from '@hooks/Spreadsheet/use-spreadsheet';
@@ -5,6 +6,11 @@ import * as S from './DataTable.styles';
 
 const DataTable = (): JSX.Element => {
   const { spreadsheet } = useSpreadsheet();
+  const [selectedRowKeys, setSelectedRowKeys] = useState<Array<number>>([]);
+
+  const onSelectChange = (selectedRows: number[]): void => {
+    setSelectedRowKeys(selectedRows);
+  };
 
   const getDataSource = () => {
     if (!spreadsheet) {
@@ -36,7 +42,11 @@ const DataTable = (): JSX.Element => {
     <S.Wrapper>
       <h2>Table</h2>
 
-      <Table dataSource={getDataSource()} columns={getColumns()} />
+      <Table
+        rowSelection={{ selectedRowKeys, onChange: onSelectChange }}
+        dataSource={getDataSource()}
+        columns={getColumns()}
+      />
     </S.Wrapper>
   );
 };
