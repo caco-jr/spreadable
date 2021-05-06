@@ -2,6 +2,7 @@ import React, { ReactNode, FunctionComponent } from 'react';
 import Head from 'next/head';
 
 import { PROJECT_NAME } from '@utils/strings';
+import Header from '@components/Header';
 
 type Props = {
   children?: ReactNode;
@@ -24,6 +25,8 @@ const Layout: FunctionComponent<Props> = ({ children, title }) => (
         href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
       />
     </Head>
+
+    <Header />
 
     <main>{children}</main>
   </>
