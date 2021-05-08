@@ -1,10 +1,10 @@
-import * as S from './LargeScale.styles';
+import * as S from './UploadPanel.styles';
 import Layout from '@components/Layout';
 import FileUpload from '@components/FileUpload';
 import { sheetToObject } from '@utils/file';
 import { useSpreadsheet } from '@hooks/Spreadsheet/use-spreadsheet';
 
-export const LargeScalePage = (): JSX.Element => {
+export const UploadPanelPage = (): JSX.Element => {
   const { setSpreadsheet } = useSpreadsheet();
 
   return (
@@ -23,4 +23,4 @@ export const LargeScalePage = (): JSX.Element => {
   );
 };
 
-export default LargeScalePage;
+export default UploadPanelPage;
