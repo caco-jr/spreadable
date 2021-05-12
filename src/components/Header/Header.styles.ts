@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.header`
-  height: 60px;
+  height: var(--header-height);
   background-color: #fff;
 
   &,

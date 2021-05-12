@@ -1,6 +1,7 @@
 import React, { ReactNode, FunctionComponent } from 'react';
 import Head from 'next/head';
 
+import * as S from './index.styles';
 import { PROJECT_NAME } from '@utils/strings';
 import Header from '@components/Header';
 
@@ -28,7 +29,7 @@ const Layout: FunctionComponent<Props> = ({ children, title }) => (
 
     <Header />
 
-    <main>{children}</main>
+    <S.Main>{children}</S.Main>
   </>
 );
 

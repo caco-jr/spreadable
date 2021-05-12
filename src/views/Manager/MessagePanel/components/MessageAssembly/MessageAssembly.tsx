@@ -39,7 +39,7 @@ const MessageAssembly = (): JSX.Element => {
 
   return (
     <S.Wrapper onSubmit={handleSubmit}>
-      <h2>MessageAssembly</h2>
+      <h2>Monte o template da mensagem</h2>
 
       <section>
         {spreadsheet?.headers.map(header => (

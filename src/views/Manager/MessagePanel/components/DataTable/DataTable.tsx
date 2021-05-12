@@ -42,8 +42,6 @@ const DataTable = (): JSX.Element => {
 
   return (
     <S.Wrapper>
-      <h2>Table</h2>
-
       <Table
         rowSelection={{ selectedRowKeys, onChange: onSelectChange }}
         dataSource={getDataSource()}

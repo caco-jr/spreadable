@@ -113,4 +113,8 @@
   --box-shadow-popout: 0 0 1px 1px var(--gray-40), 0 8px 16px 0 var(--gray-120);
   --box-shadow: var(--box-shadow-normal);
   // ----------------------------------
+  // --- Content Height
+  --header-height: 60px;
+  --main-height: calc(100vh - var(--header-height));
+  // ----------------------------------
 }
