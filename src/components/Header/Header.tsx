@@ -1,3 +1,6 @@
+import { HiOutlineDocumentRemove } from 'react-icons/hi';
+import { Tooltip } from 'antd';
+
 import * as S from './Header.styles';
 import { useSpreadsheet } from '@hooks/Spreadsheet/use-spreadsheet';
 
@@ -7,11 +10,17 @@ const Header = (): JSX.Element => {
   return (
     <S.Wrapper>
       <section className="container">
-        <span>{spreadsheet?.fileName}</span>
+        {spreadsheet && (
+          <S.Tag>
+            <Tooltip placement="topLeft" title="Remover arquivo">
+              <S.TagButtonClose type="button" onClick={removeSpreadsheet}>
+                <HiOutlineDocumentRemove />
+              </S.TagButtonClose>
+            </Tooltip>
 
-        <button type="button" onClick={removeSpreadsheet}>
-          Remover
-        </button>
+            <S.TagText>{spreadsheet?.fileName}</S.TagText>
+          </S.Tag>
+        )}
       </section>
     </S.Wrapper>
   );
