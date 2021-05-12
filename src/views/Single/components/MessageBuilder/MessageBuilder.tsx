@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as S from './MessageBuilder.styles';
+import { buildWhatsAppURI } from '@utils/url';
 
 type IFormData = {
   phoneNumber: string;
@@ -11,10 +12,8 @@ const MessageBuilder = (): JSX.Element => {
   const [link, setLink] = useState<string>('');
   const { register, handleSubmit } = useForm<IFormData>();
 
-  const buildLink = ({ phoneNumber, message }: IFormData): void => {
-    const templateLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
-
-    setLink(encodeURI(templateLink));
+  const buildLink = (formData: IFormData): void => {
+    setLink(buildWhatsAppURI(formData));
   };
 
   const onSubmit = handleSubmit(buildLink);

@@ -1,31 +1,44 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { Mentions } from 'antd';
 
 import * as S from './MessageAssembly.styles';
 import { useSpreadsheet } from '@hooks/Spreadsheet/use-spreadsheet';
-import { replaceMe } from '@utils/strings/index';
+import { replaceMe } from '@utils/strings';
+import { buildWhatsAppURI } from '@utils/url/index';
 
 const { Option } = Mentions;
 
 const MessageAssembly = (): JSX.Element => {
   const [message, setMessage] = useState('');
-  const { spreadsheet } = useSpreadsheet();
+  const { spreadsheet, selectedItems } = useSpreadsheet();
 
-  const getBeautyMessage = (): string => {
+  const getBeautyMessage = (sheetObject): string => {
     if (!spreadsheet) {
       return '';
     }
 
-    const exampleObject = spreadsheet.refinedData[0];
+    return replaceMe(message, sheetObject);
+  };
 
-    return replaceMe(
-      message,
-      (exampleObject as unknown) as Record<string, string>
-    );
+  const openInNewTab = (url: string): void => {
+    window.open(url, '_blank');
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
+    event.preventDefault();
+
+    for (const item of selectedItems) {
+      const socialNetworkURL = buildWhatsAppURI({
+        phoneNumber: `${item.telefone}`,
+        message: getBeautyMessage(item),
+      });
+
+      openInNewTab(socialNetworkURL);
+    }
   };
 
   return (
-    <S.Wrapper>
+    <S.Wrapper onSubmit={handleSubmit}>
       <h2>MessageAssembly</h2>
 
       <section>
@@ -42,7 +55,11 @@ const MessageAssembly = (): JSX.Element => {
         ))}
       </Mentions>
 
-      {getBeautyMessage()}
+      {getBeautyMessage(spreadsheet.refinedData[0])}
+
+      <button type="submit" disabled={!selectedItems.length || !message}>
+        Enviar
+      </button>
     </S.Wrapper>
   );
 };
