@@ -42,4 +42,5 @@ export const TagButtonClose = styled.button`
 export const TagText = styled.span`
   color: var(--dark-success-color);
   font-size: var(--text);
+  font-weight: bold;
 `;
