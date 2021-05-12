@@ -5,11 +5,9 @@ import MessageAssembly from './components/MessageAssembly/MessageAssembly';
 
 export const MessagePanelPage = (): JSX.Element => (
   <Layout title="Message panel">
-    <S.Wrapper className="container">
-      <h1>MessagePanel</h1>
-
-      <DataTable />
+    <S.Wrapper>
       <MessageAssembly />
+      <DataTable />
     </S.Wrapper>
   </Layout>
 );
