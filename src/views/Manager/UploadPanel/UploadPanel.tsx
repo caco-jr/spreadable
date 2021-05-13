@@ -12,7 +12,7 @@ export const UploadPanelPage = (): JSX.Element => {
     <Layout title="Large scale">
       <S.Wrapper className="container">
         <FileUpload
-          accept=".xls, .xlsx"
+          accept=".xls, .xlsx, .csv"
           onFileUpload={({ file }) => {
             sheetToObject(file.originFileObj, setSpreadsheet);
           }}
