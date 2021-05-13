@@ -42,13 +42,12 @@ const MessageAssembly = (): JSX.Element => {
     <S.Wrapper onSubmit={handleSubmit}>
       <S.Title>Monte a mensagem</S.Title>
 
-      <section>
-        {spreadsheet?.headers.map(header => (
-          <span key={header}>{header}</span>
-        ))}
-      </section>
-
-      <Mentions rows={3} onChange={setMessage} prefix={['{']}>
+      <Mentions
+        rows={3}
+        onChange={setMessage}
+        prefix={['{']}
+        placeholder={`Experimente digitar "{" para ver as tags disponíveis`}
+      >
         {spreadsheet?.headers.map(item => (
           <Option key={`suggestion-${item}`} value={`${item}}`}>
             {item}
