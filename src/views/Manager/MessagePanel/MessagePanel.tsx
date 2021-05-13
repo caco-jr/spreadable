@@ -4,7 +4,7 @@ import DataTable from './components/DataTable';
 import MessageAssembly from './components/MessageAssembly/MessageAssembly';
 
 export const MessagePanelPage = (): JSX.Element => (
-  <Layout title="Message panel">
+  <Layout title="Painel de Mensagem">
     <S.Wrapper>
       <MessageAssembly />
       <DataTable />

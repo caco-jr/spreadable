@@ -4,12 +4,13 @@ import FileUpload from '@components/FileUpload';
 import { sheetToObject } from '@utils/file';
 import { useSpreadsheet } from '@hooks/Spreadsheet/use-spreadsheet';
 import PersonUpload from './components/PersonUpload';
+import { PROJECT_NAME } from '@utils/strings';
 
 export const UploadPanelPage = (): JSX.Element => {
   const { setSpreadsheet } = useSpreadsheet();
 
   return (
-    <Layout title="Large scale">
+    <Layout title={`${PROJECT_NAME}`}>
       <S.Wrapper className="container">
         <FileUpload
           accept=".xls, .xlsx, .csv"
