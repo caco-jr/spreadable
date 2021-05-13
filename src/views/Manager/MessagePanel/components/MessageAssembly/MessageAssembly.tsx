@@ -1,6 +1,5 @@
 import { FormEvent, useState } from 'react';
-import { Mentions } from 'antd';
-import { VscPreview } from 'react-icons/vsc';
+import { Mentions, Tooltip, Divider } from 'antd';
 
 import * as S from './MessageAssembly.styles';
 import { useSpreadsheet } from '@hooks/Spreadsheet/use-spreadsheet';
@@ -47,6 +46,7 @@ const MessageAssembly = (): JSX.Element => {
         onChange={setMessage}
         prefix={['{']}
         placeholder={`Experimente digitar "{" para ver as tags disponíveis`}
+        className="c-message"
       >
         {spreadsheet?.headers.map(item => (
           <Option key={`suggestion-${item}`} value={`${item}}`}>
@@ -55,18 +55,19 @@ const MessageAssembly = (): JSX.Element => {
         ))}
       </Mentions>
 
-      {message && (
-        <>
-          <S.MessagePreviewTitle>
-            <VscPreview />
-            Example:
-          </S.MessagePreviewTitle>
+      <Tooltip
+        placement="topLeft"
+        title="A prévia sempre mostra referente ao primeiro item da tabela"
+        color="blue"
+      >
+        <S.MessagePreviewTitle>
+          <Divider orientation="left">Prévia</Divider>
+        </S.MessagePreviewTitle>
+      </Tooltip>
 
-          <S.MessagePreviewWrapper>
-            {getBeautyMessage(spreadsheet.refinedData[0])}
-          </S.MessagePreviewWrapper>
-        </>
-      )}
+      <S.MessagePreviewWrapper>
+        {getBeautyMessage(spreadsheet.refinedData[0])}
+      </S.MessagePreviewWrapper>
 
       <button type="submit" disabled={!selectedItems.length || !message}>
         Enviar
