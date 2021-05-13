@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react';
-import { Mentions, Tooltip, Divider } from 'antd';
+import { Mentions, Tooltip, Divider, Button } from 'antd';
 
 import * as S from './MessageAssembly.styles';
 import { useSpreadsheet } from '@hooks/Spreadsheet/use-spreadsheet';
@@ -69,9 +69,16 @@ const MessageAssembly = (): JSX.Element => {
         {getBeautyMessage(spreadsheet.refinedData[0])}
       </S.MessagePreviewWrapper>
 
-      <button type="submit" disabled={!selectedItems.length || !message}>
+      <Button
+        type="primary"
+        block
+        disabled={!selectedItems.length || !message}
+        htmlType="submit"
+        color="#FFF"
+        className="c-message-submit"
+      >
         Enviar
-      </button>
+      </Button>
     </S.Wrapper>
   );
 };

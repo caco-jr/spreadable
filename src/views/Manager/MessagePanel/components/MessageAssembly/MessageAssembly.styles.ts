@@ -17,7 +17,20 @@ export const Wrapper = styled.form`
 
   .c-message {
     border-radius: var(--border-radius);
-    margin-top: 30px;
+    margin-top: 16px;
+
+    &-submit {
+      span {
+        font-weight: bold;
+        color: var(--complementary-color-04);
+      }
+
+      :not(:disabled) {
+        span {
+          color: #fff;
+        }
+      }
+    }
   }
 `;
 
@@ -25,6 +38,9 @@ export const Title = styled.h2`
   color: #fff;
   font-size: var(--title);
   font-weight: bold;
+  border-bottom: 1px solid;
+  padding-bottom: 8px;
+  margin-top: 16px;
 `;
 
 export const MessagePreviewTitle = styled.section`
