@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react';
 import { Mentions } from 'antd';
+import { VscPreview } from 'react-icons/vsc';
 
 import * as S from './MessageAssembly.styles';
 import { useSpreadsheet } from '@hooks/Spreadsheet/use-spreadsheet';
@@ -39,7 +40,7 @@ const MessageAssembly = (): JSX.Element => {
 
   return (
     <S.Wrapper onSubmit={handleSubmit}>
-      <h2>Monte o template da mensagem</h2>
+      <S.Title>Monte a mensagem</S.Title>
 
       <section>
         {spreadsheet?.headers.map(header => (
@@ -55,7 +56,18 @@ const MessageAssembly = (): JSX.Element => {
         ))}
       </Mentions>
 
-      {getBeautyMessage(spreadsheet.refinedData[0])}
+      {message && (
+        <>
+          <S.MessagePreviewTitle>
+            <VscPreview />
+            Example:
+          </S.MessagePreviewTitle>
+
+          <S.MessagePreviewWrapper>
+            {getBeautyMessage(spreadsheet.refinedData[0])}
+          </S.MessagePreviewWrapper>
+        </>
+      )}
 
       <button type="submit" disabled={!selectedItems.length || !message}>
         Enviar
