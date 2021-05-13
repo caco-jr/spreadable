@@ -1,5 +1,5 @@
 import { FormEvent, useState } from 'react';
-import { Mentions, Tooltip, Divider, Button } from 'antd';
+import { Mentions, Divider, Button } from 'antd';
 
 import * as S from './MessageAssembly.styles';
 import { useSpreadsheet } from '@hooks/Spreadsheet/use-spreadsheet';
@@ -55,15 +55,9 @@ const MessageAssembly = (): JSX.Element => {
         ))}
       </Mentions>
 
-      <Tooltip
-        placement="topLeft"
-        title="A prévia sempre mostra referente ao primeiro item da tabela"
-        color="blue"
-      >
-        <S.MessagePreviewTitle>
-          <Divider orientation="left">Prévia</Divider>
-        </S.MessagePreviewTitle>
-      </Tooltip>
+      <S.MessagePreviewTitle>
+        <Divider orientation="left">Prévia</Divider>
+      </S.MessagePreviewTitle>
 
       <S.MessagePreviewWrapper>
         {getBeautyMessage(selectedItems[0] || spreadsheet.refinedData[0])}
