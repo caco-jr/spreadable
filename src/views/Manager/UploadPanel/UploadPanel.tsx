@@ -20,7 +20,7 @@ export const UploadPanelPage = (): JSX.Element => {
           <PersonUpload style={{ maxWidth: '100%' }} />
 
           <S.Title>
-            Clique ou arraste uma planilha para esta área para fazer o upload
+            Clique ou arraste uma planilha nessa área para iniciar
           </S.Title>
         </FileUpload>
       </S.Wrapper>

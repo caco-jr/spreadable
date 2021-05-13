@@ -6,4 +6,5 @@ export const Wrapper = styled.section`
 
 export const Title = styled.h1`
   margin-top: 60px;
+  color: var(--gray-450);
 `;
