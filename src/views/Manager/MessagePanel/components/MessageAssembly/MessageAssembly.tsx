@@ -66,7 +66,7 @@ const MessageAssembly = (): JSX.Element => {
       </Tooltip>
 
       <S.MessagePreviewWrapper>
-        {getBeautyMessage(spreadsheet.refinedData[0])}
+        {getBeautyMessage(selectedItems[0] || spreadsheet.refinedData[0])}
       </S.MessagePreviewWrapper>
 
       <Button
