@@ -29,7 +29,7 @@ const MessageAssembly = (): JSX.Element => {
 
     for (const item of selectedItems) {
       const socialNetworkURL = buildWhatsAppURI({
-        phoneNumber: `${item.telefone}`,
+        phoneNumber: `55${item.telefone}`,
         message: getBeautyMessage(item),
       });
 
