@@ -4,10 +4,8 @@ import MessageBuilder from './MessageBuilder';
 
 describe('MessageBuilder', () => {
   it('should render the heading', () => {
-    const { getByRole } = render(<MessageBuilder />);
+    const { container } = render(<MessageBuilder />);
 
-    expect(
-      getByRole('heading', { name: /MessageBuilder/i })
-    ).toBeInTheDocument();
+    expect(container.firstChild).toBeInTheDocument();
   });
 });

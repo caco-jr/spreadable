@@ -3,6 +3,7 @@ module.exports = {
   moduleFileExtensions: ['js', 'ts', 'tsx', 'json'],
   testPathIgnorePatterns: ['<rootDir>[/\\\\](node_modules|.next)[/\\\\]'],
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$'],
+  setupFilesAfterEnv: ['<rootDir>/test/__mocks__/setupFilesAfterEnv.ts'],
   transform: {
     '^.+\\.(ts|tsx)$': 'babel-jest',
   },

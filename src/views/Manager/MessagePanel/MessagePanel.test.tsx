@@ -2,10 +2,14 @@ import { render } from '@test/testUtils';
 
 import MessagePanel from './MessagePanel';
 
-describe('MessagePanel', () => {
-  it('should render the heading', () => {
-    const { getByRole } = render(<MessagePanel />);
+jest.mock('@hooks/Spreadsheet/use-spreadsheet', () => ({
+  useSpreadsheet: () => ({ selectedItems: [], spreadsheet: null }),
+}));
 
-    expect(getByRole('heading', { name: /MessagePanel/i })).toBeInTheDocument();
+describe('MessagePanel', () => {
+  it('should render', () => {
+    const { container } = render(<MessagePanel />);
+
+    expect(container.firstChild).toBeInTheDocument();
   });
 });

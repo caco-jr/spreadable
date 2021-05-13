@@ -6,6 +6,6 @@ describe('UploadPanel', () => {
   it('should render the heading', () => {
     const { getByRole } = render(<UploadPanel />);
 
-    expect(getByRole('heading', { name: /LargeScale/i })).toBeInTheDocument();
+    expect(getByRole('heading', { name: /Clique/i })).toBeInTheDocument();
   });
 });
