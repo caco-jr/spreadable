@@ -17,6 +17,7 @@ const FileUpload = ({
 }: IProps): JSX.Element => {
   const draggerProps = {
     name: 'file',
+    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
     multiple: false,
     accept,
     onChange(info) {
