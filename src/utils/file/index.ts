@@ -31,7 +31,7 @@ const builder = (
   sheetList: Array<Array<string | number>>
 ): ISpreadsheet => {
   const headers = sheetList[0].map(item => toCamelCase(`${item}`));
-  const rows = sheetList.slice(1);
+  const rows = sheetList.slice(1).filter(row => row?.length);
 
   const buildObject = (list: Array<string | number>) =>
     list.reduce(
