@@ -1,6 +1,7 @@
 import { Upload, message } from 'antd';
 
 import * as S from './FileUpload.styles';
+import { apiEndpoints } from '@utils/url';
 
 const { Dragger } = Upload;
 
@@ -17,7 +18,7 @@ const FileUpload = ({
 }: IProps): JSX.Element => {
   const draggerProps = {
     name: 'file',
-    action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+    action: apiEndpoints.SPREADSHEET,
     multiple: false,
     accept,
     onChange(info) {
