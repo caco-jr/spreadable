@@ -24,12 +24,21 @@ const MessageAssembly = (): JSX.Element => {
     window.open(url, '_blank');
   };
 
+  const getPhoneVariable = (): string => {
+    const phoneNames = ['whatsApp', 'celular', 'telefone', 'phoneNumber'];
+
+    return phoneNames.find(phoneName =>
+      spreadsheet.headers.includes(phoneName)
+    );
+  };
+
   const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
+    const phoneNumberVariable = getPhoneVariable();
 
     for (const item of selectedItems) {
       const socialNetworkURL = buildWhatsAppURI({
-        phoneNumber: `55${item.telefone}`,
+        phoneNumber: `55${phoneNumberVariable}`,
         message: getBeautyMessage(item),
       });
 
